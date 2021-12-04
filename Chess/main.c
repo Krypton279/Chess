@@ -7,7 +7,7 @@
 int main(){
 	printf("hello\n");
 	allegroinit();
-	fenparser("8/8/8/8/8/8/8/4p3");
+	fenparser("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR");
 	al_flip_display();
 	ALLEGRO_TIMER* timer = al_create_timer(1.0 / 30);
 	al_register_event_source(event_queue, al_get_timer_event_source(timer));

@@ -188,6 +188,194 @@ int calculatemoves(){
 		}
 		switcher = 1;
 	}
+	if(board[pxtocell(ev.mouse.x,ev.mouse.y)] == (BLACK | KNIGHT)){
+		for(int i = 0;i < 64;i++){
+			board2[i] = board[i];
+		}
+		y = ((pxtocell(ev.mouse.x,ev.mouse.y)-15) - ((pxtocell(ev.mouse.x,ev.mouse.y)-15) % 8)) / 8;
+		pxtocell(ev.mouse.x,ev.mouse.y);
+		if((yy-2) == y){
+			 board[(pxtocell(ev.mouse.x,ev.mouse.y)) - 15] = INDIC; 
+		}
+		y = ((pxtocell(ev.mouse.x,ev.mouse.y)+15) - ((pxtocell(ev.mouse.x,ev.mouse.y)+15) % 8)) / 8;
+		pxtocell(ev.mouse.x,ev.mouse.y);
+		if((yy+2) == y){
+			 board[(pxtocell(ev.mouse.x,ev.mouse.y)) + 15] = INDIC; 
+		}
+		y = ((pxtocell(ev.mouse.x,ev.mouse.y)-17) - ((pxtocell(ev.mouse.x,ev.mouse.y)-17) % 8)) / 8;
+		pxtocell(ev.mouse.x,ev.mouse.y);
+		if((yy-2) == y){
+			 board[(pxtocell(ev.mouse.x,ev.mouse.y)) - 17] = INDIC; 
+		}
+		y = ((pxtocell(ev.mouse.x,ev.mouse.y)+17) - ((pxtocell(ev.mouse.x,ev.mouse.y)+17) % 8)) / 8;
+		pxtocell(ev.mouse.x,ev.mouse.y);
+		if((yy+2) == y){
+			 board[(pxtocell(ev.mouse.x,ev.mouse.y)) + 17] = INDIC; 
+		}
+		y = ((pxtocell(ev.mouse.x,ev.mouse.y)-6) - ((pxtocell(ev.mouse.x,ev.mouse.y)-6) % 8)) / 8;
+		pxtocell(ev.mouse.x,ev.mouse.y);
+		if((yy-1) == y){
+			 board[(pxtocell(ev.mouse.x,ev.mouse.y)) - 6] = INDIC; 
+		}
+		y = ((pxtocell(ev.mouse.x,ev.mouse.y)+6) - ((pxtocell(ev.mouse.x,ev.mouse.y)+6) % 8)) / 8;
+		pxtocell(ev.mouse.x,ev.mouse.y);
+		if((yy+1) == y){
+			 board[(pxtocell(ev.mouse.x,ev.mouse.y)) + 6] = INDIC; 
+		}
+		y = ((pxtocell(ev.mouse.x,ev.mouse.y)-10) - ((pxtocell(ev.mouse.x,ev.mouse.y)-10) % 8)) / 8;
+		pxtocell(ev.mouse.x,ev.mouse.y);
+		if((yy-1) == y){
+			 board[(pxtocell(ev.mouse.x,ev.mouse.y)) - 10] = INDIC; 
+		}
+		y = ((pxtocell(ev.mouse.x,ev.mouse.y)+10) - ((pxtocell(ev.mouse.x,ev.mouse.y)+10) % 8)) / 8;
+		pxtocell(ev.mouse.x,ev.mouse.y);
+		if((yy+1) == y){
+			 board[(pxtocell(ev.mouse.x,ev.mouse.y)) + 10] = INDIC; 
+		}
+		switcher = 1;
+	}
+	if(board[pxtocell(ev.mouse.x,ev.mouse.y)] == (WHITE | ROOK)){
+		for(int i = 0;i < 64;i++){
+			board2[i] = board[i];
+		}
+		x = ((pxtocell(ev.mouse.x,ev.mouse.y))% 8);
+		y = ((pxtocell(ev.mouse.x,ev.mouse.y)) - ((pxtocell(ev.mouse.x,ev.mouse.y)) % 8)) / 8;
+		for(int i = 0;i < 8;i++){
+			if(i != x){
+				board[(y*8) + i] = INDIC;
+			}
+		}
+		for(int j = 0;j < 8;j++){
+			if(j != y){
+				board[(j*8) + x] = INDIC;
+			}
+		}
+		switcher = 1;
+	}
+	if(board[pxtocell(ev.mouse.x,ev.mouse.y)] == (BLACK | ROOK)){
+		for(int i = 0;i < 64;i++){
+			board2[i] = board[i];
+		}
+		x = ((pxtocell(ev.mouse.x,ev.mouse.y))% 8);
+		y = ((pxtocell(ev.mouse.x,ev.mouse.y)) - ((pxtocell(ev.mouse.x,ev.mouse.y)) % 8)) / 8;
+		for(int i = 0;i < 8;i++){
+			if(i != x){
+				board[(y*8) + i] = INDIC;
+			}
+		}
+		for(int j = 0;j < 8;j++){
+			if(j != y){
+				board[(j*8) + x] = INDIC;
+			}
+		}
+		switcher = 1;
+	}
+	if(board[pxtocell(ev.mouse.x,ev.mouse.y)] == (BLACK | BISHOP)){
+		for(int i = 0;i < 64;i++){
+			if(board[i] == INDIC){
+				board[i] = NONE;
+			}
+			board2[i] = board[i];
+		}
+		int i = 0;
+		y = ((pxtocell(ev.mouse.x,ev.mouse.y)) - ((pxtocell(ev.mouse.x,ev.mouse.y)) % 8)) / 8;
+		x = ((pxtocell(ev.mouse.x,ev.mouse.y))% 8);
+		pxtocell(ev.mouse.x,ev.mouse.y);
+		for (int i = 0; i < 8; ++i)
+		{
+			if((((y+i)*8)+x+i) != (pxtocell(ev.mouse.x,ev.mouse.y))){
+				board[((y+i)*8)+x+i] = INDIC;
+			}
+		}
+		for (int i = 0; i < 8; ++i)
+		{
+			if((((y+i)*8)+x+i) != (pxtocell(ev.mouse.x,ev.mouse.y))){
+				board[((y+i)*8)+x-i] = INDIC;
+			}
+			if((x - i) == 0){
+				printf("%d %d %d %d %d\n",yy,y,i,((y+i)*8)+x+i,x-i);
+				break;
+			}
+		}
+		for (int i = 0; i < 8; ++i)
+		{
+			if((((y-i)*8)+x-i) > 0){
+				if((((y+i)*8)+x+i) != (pxtocell(ev.mouse.x,ev.mouse.y))){
+					board[((y-i)*8)+x-i] = INDIC;
+				}
+			}
+			if((x - i) == 0){
+				printf("%d %d %d %d %d\n",yy,y,i,((y+i)*8)+x+i,x-i);
+				break;
+			}
+		}
+		for (int i = 0; i < 8; ++i)
+		{
+			if((((y-i)*8)+x+i) > 0){
+				if((((y+i)*8)+x+i) != (pxtocell(ev.mouse.x,ev.mouse.y))){
+					board[((y-i)*8)+x+i] = INDIC;
+				}
+			}
+			if((x + i) == 7){
+				printf("%d %d %d %d %d\n",yy,y,i,((y+i)*8)+x+i,x-i);
+				break;
+			}
+		}
+		switcher = 1;
+	}
+	if(board[pxtocell(ev.mouse.x,ev.mouse.y)] == (WHITE | BISHOP)){
+		for(int i = 0;i < 64;i++){
+			if(board[i] == INDIC){
+				board[i] = NONE;
+			}
+			board2[i] = board[i];
+		}
+		int i = 0;
+		y = ((pxtocell(ev.mouse.x,ev.mouse.y)) - ((pxtocell(ev.mouse.x,ev.mouse.y)) % 8)) / 8;
+		x = ((pxtocell(ev.mouse.x,ev.mouse.y))% 8);
+		pxtocell(ev.mouse.x,ev.mouse.y);
+		for (int i = 0; i < 8; ++i)
+		{
+			if((((y+i)*8)+x+i) != (pxtocell(ev.mouse.x,ev.mouse.y))){
+				board[((y+i)*8)+x+i] = INDIC;
+			}
+		}
+		for (int i = 0; i < 8; ++i)
+		{
+			if((((y+i)*8)+x+i) != (pxtocell(ev.mouse.x,ev.mouse.y))){
+				board[((y+i)*8)+x-i] = INDIC;
+			}
+			if((x - i) == 0){
+				printf("%d %d %d %d %d\n",yy,y,i,((y+i)*8)+x+i,x-i);
+				break;
+			}
+		}
+		for (int i = 0; i < 8; ++i)
+		{
+			if((((y-i)*8)+x-i) > 0){
+				if((((y+i)*8)+x+i) != (pxtocell(ev.mouse.x,ev.mouse.y))){
+					board[((y-i)*8)+x-i] = INDIC;
+				}
+			}
+			if((x - i) == 0){
+				printf("%d %d %d %d %d\n",yy,y,i,((y+i)*8)+x+i,x-i);
+				break;
+			}
+		}
+		for (int i = 0; i < 8; ++i)
+		{
+			if((((y-i)*8)+x+i) > 0){
+				if((((y+i)*8)+x+i) != (pxtocell(ev.mouse.x,ev.mouse.y))){
+					board[((y-i)*8)+x+i] = INDIC;
+				}
+			}
+			if((x + i) == 7){
+				printf("%d %d %d %d %d\n",yy,y,i,((y+i)*8)+x+i,x-i);
+				break;
+			}
+		}
+		switcher = 1;
+	}
 	return 0;
 }
 
